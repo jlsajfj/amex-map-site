@@ -1,3 +1,7 @@
+"""
+honestly this isn't really even a backend- its simply a wrapper for another api
+"""
+
 import requests
 
 url = "https://bdaas.americanexpress.com/api/servicing/v1/maps"
@@ -9,4 +13,17 @@ headers = {}
 
 response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
 
-print(response.text)
+# print(response.text)
+
+from flask import Flask
+app = Flask(__name__)
+app.config["DEBUG"] = True
+@app.route('/', methods=['GET'])
+def home():
+    return "you shouldn't be seeing this"
+
+@app.route('/', methods=['POST'])
+def main_api():
+    return response.text
+
+app.run()
