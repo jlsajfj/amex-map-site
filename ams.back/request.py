@@ -23,7 +23,9 @@ def home():
 
 @app.route('/', methods=['POST'])
 def main_api():
-    print(flask.request.headers.get('lat_lng'))
+    if app.debug:
+        print("recieved request")
+        print("lat, long:", flask.request.headers.get('lat_lng'))
     return response.text
 
 app.run()
