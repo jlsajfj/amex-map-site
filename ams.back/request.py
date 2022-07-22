@@ -15,8 +15,8 @@ response = requests.request("GET", url, data=payload, headers=headers, params=qu
 
 # print(response.text)
 
-from flask import Flask
-app = Flask(__name__)
+import flask
+app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 @app.route('/', methods=['GET'])
 def home():
@@ -24,6 +24,7 @@ def home():
 
 @app.route('/', methods=['POST'])
 def main_api():
+    print(flask.request.headers.get('lat_lng'))
     return response.text
 
 app.run()
