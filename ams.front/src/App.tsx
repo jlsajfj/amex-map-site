@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Token } from './token'
-import Map from 'react-map-gl';
 
 function App() {
   return (
